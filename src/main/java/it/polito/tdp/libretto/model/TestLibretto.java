@@ -4,27 +4,23 @@ import java.time.LocalDate;
 
 public class TestLibretto {
 	
-	Libretto lib ;
+	Libretto l;
 	
 	private void run() {
-		this.lib = new Libretto() ; // crea libretto vuoto
+		this.l = new Libretto();
 		
-		Voto v1 = new Voto("Tecniche di programmazione", 30, LocalDate.of(2020, 06, 15)) ;
-		Voto v2 = new Voto("Analisi II", 28, LocalDate.of(2020, 06, 28)) ;
-
-		lib.add(v1);
-		lib.add(v2);
-		lib.add(new Voto("Economia", 24, LocalDate.of(2020, 02, 14)));
+		Voto v1 = new Voto("TdP", 30, LocalDate.of(2020, 05, 12));
+		l.add(v1);
+		l.add(new Voto("Analisi 2", 18, LocalDate.of(2020, 06, 27)));
 		
-		System.out.println(this.lib) ;
+		System.out.println(this.l);
 		
-		System.out.println(this.lib.stampaVotiUguali(28)) ;
+		System.out.println(this.l.estraiVotiUguali(18));
 		
-		System.out.println(this.lib.estraiVotiUguali(28)) ;
 	}
-
+	
 	public static void main(String[] args) {
-		TestLibretto test = new TestLibretto() ;
+		TestLibretto test = new TestLibretto();
 		test.run();
 	}
 

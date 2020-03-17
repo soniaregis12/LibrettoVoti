@@ -2,64 +2,45 @@ package it.polito.tdp.libretto.model;
 
 import java.time.LocalDate;
 
-/**
- * Classe Voto, contiene le informazioni su un esame
- * superato.
- * 
- * @author Fulvio
- *
- */
 public class Voto {
 	
-	private String corso ; // "Tecniche di Programmazione"
-	private int voto ; // 28
-	private LocalDate data ; // 15/06/2020
+	private String nomeCorso;
+	private int votoOttenuto;
+	private LocalDate data;
 	
-	/**
-	 * Costruisce un nuovo Voto.
-	 * 
-	 * @param corso nome del corso superato
-	 * @param voto valore del voto acquisito
-	 * @param data data di superamento dell'esame
-	 */
-	public Voto(String corso, int voto, LocalDate data) {
-		super();
-		this.corso = corso;
-		this.voto = voto;
-		this.data = data;
+	public String getNomeCorso() {
+		return nomeCorso;
 	}
-
-	public String getCorso() {
-		return corso;
+	public void setNomeCorso(String nomeCorso) {
+		this.nomeCorso = nomeCorso;
 	}
-
-	public void setCorso(String corso) {
-		this.corso = corso;
+	public int getVotoOttenuto() {
+		return votoOttenuto;
 	}
-
-	public int getVoto() {
-		return voto;
+	public void setVotoOttenuto(int votoOttenuto) {
+		this.votoOttenuto = votoOttenuto;
 	}
-
-	public void setVoto(int voto) {
-		this.voto = voto;
-	}
-
 	public LocalDate getData() {
 		return data;
 	}
-
 	public void setData(LocalDate data) {
 		this.data = data;
 	}
-
+	/**
+	 * 													// Slash, doppio asterisco, invio per generale la documentazione 
+	 * @param nomeCorso
+	 * @param votoOttenuto
+	 * @param data
+	 */
+	public Voto(String nomeCorso, int votoOttenuto, LocalDate data) {
+		this.nomeCorso = nomeCorso;
+		this.votoOttenuto = votoOttenuto;
+		this.data = data;
+	}
 	@Override
 	public String toString() {
-		return corso + ": " + voto + " (" + data + ")";
+		return nomeCorso + ", voto: " + votoOttenuto + ", data: " + data;
 	}
-	
-	
-	
 	
 
 }
