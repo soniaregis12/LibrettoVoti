@@ -4,49 +4,57 @@ import java.time.LocalDate;
 
 public class TestLibretto {
 	
-	Libretto l;
+	Libretto lib ;
 	
 	private void run() {
-		this.l = new Libretto();
+		this.lib = new Libretto() ; // crea libretto vuoto
 		
-		// 1 Inserire alcuni voti
-		Voto v1 = new Voto("TdP", 30, LocalDate.of(2020, 05, 12));
-		l.add(v1);
-		l.add(new Voto("Analisi 2", 18, LocalDate.of(2020, 06, 27)));
-		l.add(new Voto("Economia", 24, LocalDate.of(2020, 02, 14)));
+		// 1. Inserire alcuni voti
+		Voto v1 = new Voto("Tecniche di programmazione", 30, LocalDate.of(2020, 06, 15)) ;
+		Voto v2 = new Voto("Analisi II", 28, LocalDate.of(2020, 06, 28)) ;
+
+		lib.add(v1);
+		lib.add(v2);
+		if( lib.add(new Voto("Economia", 24, LocalDate.of(2020, 02, 14))) == false)
+			System.out.println("Errore nell'inserimento di Economia") ;
 		
-		System.out.println(this.l);
+		System.out.println(this.lib) ;
 		
-		// 2 Stampa tutti i voti uguali a 28
-		System.out.println(this.l.estraiVotiUguali(18));
+		// 2. Stampa tutti i voti uguali a 28
+		System.out.println(this.lib.stampaVotiUguali(28)) ;
 		
-		// 3 Cerca esame superato conoscendo nome corso
-		String nomeCorso = "Analisi 2";
-		Voto voto = l.cercaNomeCorso(nomeCorso);
-		System.out.println("Il voto ricercato e': ");  //+ voto.getNomeCorso()
+		System.out.println(this.lib.estraiVotiUguali(28)) ;
 		
-		Voto votoMancante = l.cercaNomeCorso("Fisica 1");
-		System.out.println("Il voto mancante e': " + votoMancante);
+		// 3. Cerca un esame superato, conoscendo il nome del corso
+		String nomeCorso = "Analisi II" ;
+		Voto votoAnalisi = lib.cercaNomeCorso(nomeCorso) ;
+		System.out.println("Il voto di "+nomeCorso+" è "+votoAnalisi.getVoto()) ;
+		Voto votoMancante = lib.cercaNomeCorso("Fisica I") ;
+		System.out.println("Il voto di Fisica I è "+votoMancante) ;
 		
-		// 4-5 Verifica duplicati/conflitti
-		Voto economia2 = new Voto("Economia", 24, LocalDate.now());
-		Voto economia3 = new Voto("Economia", 21, LocalDate.now());
-		System.out.println("Economia con 24 è duplicato: " + l.isDuplicato(economia2) + "/ conflitto: " + l.isConflitto(economia2));
-		System.out.println("Economia con 21 è duplicato: " + l.isDuplicato(economia3) + "/ conflitto: " + l.isConflitto(economia3));
+		// 4. 5. Verifica voti duplicati o voti in conflitto
+		Voto economia2 = new Voto("Economia", 24, LocalDate.now()) ;
+		Voto economia3 = new Voto("Economia", 21, LocalDate.now()) ;
+		System.out.println("Economia con 24 è duplicato: "+
+		lib.isDuplicato(economia2)+"/ conflitto:"+
+		lib.isConflitto(economia2)) ;
 		
-		// 6 Modifica della funzione Libretto.add
+		System.out.println("Economia con 21 è duplicato: "+
+		lib.isDuplicato(economia3)+"/ conflitto:"+
+		lib.isConflitto(economia3)) ;
 		
-		// 7 
-		
-		Libretto migliorato = l.creaLibrettoMigliorato();
-		System.out.println(l);
-		System.out.println("Miglioramento del libretto: ");
+		// 6. Migliora il libretto
+		Libretto migliorato = lib.creaLibrettoMigliorato() ;
+		System.out.println("Miglioramento del libretto") ;
+		System.out.println(lib); 
 		System.out.println(migliorato);
+		
+
 
 	}
-	
+
 	public static void main(String[] args) {
-		TestLibretto test = new TestLibretto();
+		TestLibretto test = new TestLibretto() ;
 		test.run();
 	}
 
