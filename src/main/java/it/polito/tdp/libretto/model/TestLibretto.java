@@ -49,7 +49,22 @@ public class TestLibretto {
 		System.out.println(lib); 
 		System.out.println(migliorato);
 		
+		// 7a Stampa in ordine alfabetico
+		Libretto alfabetico = new Libretto(lib);
+		alfabetico.ordinPerCorso();
+		System.out.println(alfabetico);
+		
+		// 7b Stampa in ordine di voto
+		Libretto votiDecrescenti = new Libretto(lib);
+		votiDecrescenti.ordinPerVoto();
+		System.out.println(votiDecrescenti);
 
+		// 8 Elimina voti bassi
+		lib.add(new Voto("Chimica", 19, LocalDate.of(2020, 03, 17)));
+		lib.ordinPerCorso();
+		System.out.println(lib);
+		lib.cancellaVotiScarsi();
+		System.out.println(lib);
 
 	}
 

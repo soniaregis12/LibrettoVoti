@@ -180,35 +180,24 @@ public class Libretto {
 		return nuovo ;
 	}
 	
-	/**
-	 * riordina i voti presenti nel libretto corrente
-	 * alfabeticamente per corso
-	 */
-	public void ordinaPerCorso() {
-		Collections.sort(this.voti) ;
+	public void ordinPerCorso() {
+		Collections.sort(this.voti);;
 	}
 	
-	public void ordinaPerVoto() {
-		Collections.sort(this.voti, new ConfrontaVotiPerValutazione());
-//		this.voti.sort(new ConfrontaVotiPerValutazione());
+	public void ordinPerVoto() {
+		Collections.sort(this.voti, new ComparatoreVotiPerVoto());;
 	}
-
-	/**
-	 * Elimina dal libretto tutti i voti <24
-	 */
+	
 	public void cancellaVotiScarsi() {
-		List<Voto> daRimuovere=new ArrayList<>() ;
-		for(Voto v: this.voti) {
-			if(v.getVoto()<24) {
+		List<Voto> daRimuovere = new ArrayList<Voto>();
+		for(Voto v : this.voti) {
+			if(v.getVoto() < 24) {
 				daRimuovere.add(v);
 			}
 		}
-
-		this.voti.removeAll(daRimuovere) ;
-//		for(Voto v: daRimuovere) {
-//			this.voti.remove(v) ;
-//		}
-		
+		this.voti.removeAll(daRimuovere);
 	}
+	
+	
 	
 }
